@@ -1,5 +1,5 @@
 name: 'Locust Load Test'
-author: 'Adrian Pardo'
+author: 'Chris Perry'
 description: 'Load Test an application using Locust'
 inputs:
   LOCUSTFILE:
@@ -20,6 +20,10 @@ inputs:
     description: 'Specify the run time for a test. Defaults to 10 seconds.'
     required: false
     default: '10s'
+  REPORTPATH:
+    description: 'Specify the path to write the HTML report.'
+    required: false
+    default: 'reports/locust/locust-test-report.html'
 runs:
   using: 'docker'
   image: 'Dockerfile'
@@ -29,6 +33,7 @@ runs:
     - ${{ inputs.USERS }}
     - ${{ inputs.RATE }}
     - ${{ inputs.RUNTIME }}
+    - ${{ inputs.REPORTPATH }}
 branding:
   icon: 'link'
   color: 'green'
